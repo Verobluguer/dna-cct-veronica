@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verónica Bluguermann — About Me</title>
+<style>
+  :root {
+    --sky: #74c0fc;
+    --sun: #ffd43b;
+    --pampas: #f4e9d8;
+    --earth: #a86b3c;
+    --ink: #2b2118;
+    --leaf: #5a8a3a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: var(--ink);
+    background: var(--pampas);
+    line-height: 1.6;
+  }
+
+  header {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(180deg, #9bd1ff 0%, #cbe7ff 50%, var(--pampas) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: "";
+    position: absolute;
+    top: 8%;
+    right: 12%;
+    width: 110px;
+    height: 110px;
+    background: var(--sun);
+    border-radius: 50%;
+    box-shadow: 0 0 60px rgba(255, 212, 59, 0.6);
+  }
+  header h1 {
+    font-size: clamp(2.2rem, 6vw, 4rem);
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+    z-index: 1;
+  }
+  header h1 span {
+    color: var(--earth);
+    font-weight: 600;
+  }
+  header p.subtitle {
+    font-size: 1.2rem;
+    color: #555;
+    max-width: 600px;
+    z-index: 1;
+  }
+  header .scroll {
+    position: absolute;
+    bottom: 2rem;
+    font-size: 0.9rem;
+    color: #555;
+    animation: bob 2s ease-in-out infinite;
+  }
+  @keyframes bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(8px); }
+  }
+
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem;
+  }
+
+  section {
+    margin-bottom: 3rem;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  }
+  section h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    color: var(--earth);
+    border-bottom: 2px solid var(--pampas);
+    padding-bottom: 0.5rem;
+  }
+  section p { font-size: 1.05rem; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  .card {
+    background: var(--pampas);
+    padding: 1.25rem;
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.2s ease;
+  }
+  .card:hover { transform: translateY(-4px); }
+  .card .emoji { font-size: 2.5rem; display: block; margin-bottom: 0.5rem; }
+  .card h3 { font-size: 1rem; color: var(--earth); margin-bottom: 0.25rem; }
+  .card p { font-size: 0.95rem; color: #555; }
+
+  .family {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+  .family span {
+    background: var(--pampas);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.95rem;
+  }
+
+  footer {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+    font-size: 0.9rem;
+    background: #fff;
+    border-top: 1px solid #eee;
+  }
+  footer .flags { font-size: 1.5rem; margin-bottom: 0.5rem; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Hello, I'm <span>Verónica</span></h1>
+  <p class="subtitle">An Argentinian living in Denmark, sharing a little bit about myself.</p>
+  <div class="scroll">scroll down ↓</div>
+</header>
+
+<main>
+
+  <section>
+    <h2>About Me</h2>
+    <p>
+      My name is Verónica Bluguermann. I'm 45 years old and live in Denmark
+      with my husband and two kids. I'm originally from Argentina, and although
+      home is now in the north, my heart still keeps a rhythm with the south.
+    </p>
+  </section>
+
+  <section>
+    <h2>My Family</h2>
+    <p>
+      I have an older brother and a younger sister. I lost my father, but
+      my mom is still with us. All of them live in Argentina, so the distance
+      is real — but the love makes it shorter.
+    </p>
+    <div class="family">
+      <span>👩 Mom</span>
+      <span>👨 Older brother</span>
+      <span>👩 Younger sister</span>
+      <span>💑 Husband</span>
+      <span>👧 Two kids</span>
+    </div>
+  </section>
+
+  <section>
+    <h2>A Few of My Favourites</h2>
+    <div class="grid">
+      <div class="card">
+        <span class="emoji">🐒</span>
+        <h3>Favourite Animal</h3>
+        <p>The monkey — clever, playful, and full of character.</p>
+      </div>
+      <div class="card">
+        <span class="emoji">🥩</span>
+        <h3>Favourite Food</h3>
+        <p>Asado, the classic Argentinian grill. Nothing beats it.</p>
+      </div>
+      <div class="card">
+        <span class="emoji">🇦🇷</span>
+        <h3>Roots</h3>
+        <p>Born and raised in Argentina.</p>
+      </div>
+      <div class="card">
+        <span class="emoji">🇩🇰</span>
+        <h3>Home</h3>
+        <p>Building a life in Denmark with my family.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="flags">🇦🇷 ↔ 🇩🇰</div>
+  Made with care by Verónica Bluguermann
+</footer>
+
+</body>
+</html>
