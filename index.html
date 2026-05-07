@@ -127,6 +127,62 @@
     font-size: 0.95rem;
   }
 
+  .live-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  .live-card {
+    padding: 1.25rem;
+    border-radius: 10px;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+  .live-card.weather {
+    background: linear-gradient(135deg, #4a90d9 0%, #74c0fc 100%);
+  }
+  .live-card.match {
+    background: linear-gradient(135deg, #c8102e 0%, #8b0000 100%);
+  }
+  .live-card h3 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.85;
+    margin-bottom: 0.5rem;
+  }
+  .live-card .big {
+    font-size: 2.2rem;
+    font-weight: 600;
+    line-height: 1.1;
+    margin-bottom: 0.25rem;
+  }
+  .live-card .sub {
+    font-size: 0.95rem;
+    opacity: 0.95;
+  }
+  .live-card .meta {
+    font-size: 0.8rem;
+    opacity: 0.75;
+    margin-top: 0.75rem;
+  }
+  .score {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0.5rem 0;
+  }
+  .score .team { font-size: 1rem; font-weight: 500; flex: 1; }
+  .score .team.away { text-align: right; }
+  .score .nums {
+    font-size: 2rem;
+    font-weight: 700;
+    padding: 0 0.75rem;
+  }
+
   footer {
     text-align: center;
     padding: 2rem;
@@ -174,6 +230,29 @@
   </section>
 
   <section>
+    <h2>Right Now</h2>
+    <p>A little snapshot of the things I keep an eye on day to day.</p>
+    <div class="live-row">
+      <div class="live-card weather">
+        <h3>Copenhagen weather</h3>
+        <div class="big" id="temp">—</div>
+        <div class="sub" id="cond">loading…</div>
+        <div class="meta" id="wmeta"></div>
+      </div>
+      <div class="live-card match">
+        <h3>Latest Liverpool game</h3>
+        <div class="score">
+          <span class="team home">Manchester United</span>
+          <span class="nums">3 – 2</span>
+          <span class="team away">Liverpool</span>
+        </div>
+        <div class="sub">Premier League · Old Trafford</div>
+        <div class="meta">3 May 2026 · Cunha &amp; Šeško scored early; Mainoo sealed it late.</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
     <h2>A Few of My Favourites</h2>
     <div class="grid">
       <div class="card">
@@ -206,5 +285,29 @@
   Made with care by Verónica Bluguermann
 </footer>
 
+<script>
+  const wmoMap = {
+    0: ['Clear sky', '☀️'],
+    1: ['Mainly clear', '🌤️'], 2: ['Partly cloudy', '⛅'], 3: ['Overcast', '☁️'],
+    45: ['Fog', '🌫️'], 48: ['Rime fog', '🌫️'],
+    51: ['Light drizzle', '🌦️'], 53: ['Drizzle', '🌦️'], 55: ['Heavy drizzle', '🌧️'],
+    61: ['Light rain', '🌦️'], 63: ['Rain', '🌧️'], 65: ['Heavy rain', '🌧️'],
+    71: ['Light snow', '🌨️'], 73: ['Snow', '🌨️'], 75: ['Heavy snow', '❄️'],
+    80: ['Showers', '🌦️'], 81: ['Showers', '🌧️'], 82: ['Violent showers', '⛈️'],
+    95: ['Thunderstorm', '⛈️'], 96: ['Thunderstorm', '⛈️'], 99: ['Thunderstorm', '⛈️']
+  };
+  fetch('https://api.open-meteo.com/v1/forecast?latitude=55.6761&longitude=12.5683&current=temperature_2m,weather_code,wind_speed_10m,relative_humidity_2m&timezone=Europe%2FCopenhagen')
+    .then(r => r.json())
+    .then(d => {
+      const c = d.current;
+      const [label, icon] = wmoMap[c.weather_code] || ['—', ''];
+      document.getElementById('temp').textContent = `${icon} ${Math.round(c.temperature_2m)}°C`;
+      document.getElementById('cond').textContent = label;
+      document.getElementById('wmeta').textContent = `Humidity ${c.relative_humidity_2m}% · Wind ${Math.round(c.wind_speed_10m)} km/h`;
+    })
+    .catch(() => {
+      document.getElementById('cond').textContent = 'Weather unavailable';
+    });
+</script>
 </body>
 </html>
