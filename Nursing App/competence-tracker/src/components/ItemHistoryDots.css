@@ -1,0 +1,26 @@
+.dots {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.dots__dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.dots__dot--pass {
+  background: var(--life-success);
+}
+
+.dots__dot--miss {
+  background: var(--life-danger);
+}
+
+.dots__dot--empty {
+  background: transparent;
+  border: 1px solid var(--color-border);
+}

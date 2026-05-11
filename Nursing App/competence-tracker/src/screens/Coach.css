@@ -1,0 +1,45 @@
+.coach {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.coach__headline {
+  font-size: var(--fs-xl);
+  line-height: 1.2;
+}
+
+.coach__sub {
+  margin-top: var(--space-2);
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+}
+
+.coach__placeholder {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.coach__bubble {
+  max-width: 85%;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-lg);
+  font-size: var(--fs-sm);
+  line-height: 1.45;
+}
+
+.coach__bubble--ai {
+  align-self: flex-start;
+  background: var(--color-action-soft);
+  color: var(--color-text-strong);
+  border-bottom-left-radius: var(--radius-sm);
+}
+
+.coach__bubble--user {
+  align-self: flex-end;
+  background: var(--color-bg-subtle);
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border-soft);
+  border-bottom-right-radius: var(--radius-sm);
+}
